@@ -13,9 +13,9 @@ public class Factura
 
     }
 
-    public Factura(String concepto, int tempo, int valor) {
+    public Factura(String conceito, int tempo, int valor) {
         this.id = tempId;
-        this.concepto = concepto;
+        this.conceito = conceito;
         this.tempo = tempo;
         this.valor = valor;
         tempId++;
@@ -25,12 +25,12 @@ public class Factura
         return id;
     }
 
-    public String getConcepto() {
-        return concepto;
+    public String getConceito() {
+        return conceito;
     }
 
     public void setConcepto(String concepto) {
-        this.concepto = concepto;
+        this.conceito = concepto;
     }
 
     public int getTempo() {
@@ -47,5 +47,16 @@ public class Factura
 
     public void setValor(int valor) {
         this.valor = valor;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Factura{" +
+                "id=" + id +
+                ", conceito='" + conceito + '\'' +
+                ", tempo=" + tempo +
+                ", valor=" + valor +
+                '}';
     }
 }
