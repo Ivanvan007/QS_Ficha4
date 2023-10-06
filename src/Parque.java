@@ -4,11 +4,11 @@ public class Parque
 {
     private static float precoMinStatic = 0.15f; //preço por cada 15 minutos
     private static int lugaresEstacionamento = 500;
-    private float precoMinutos;//preço por cada 15 minutos
-    private int numeroLugares;//lugares totais do estacionamento
-    private int lugaresDisponiveis;
-    private ArrayList<Aluno>alunosEstacionados;
-    private int estacionados;
+    private static float precoMinutos;//preço por cada 15 minutos
+    private static int numeroLugares;//lugares totais do estacionamento
+    private static int lugaresDisponiveis;
+    private static ArrayList<Aluno>alunosEstacionados;
+    private static int estacionados;
 
     public Parque()
     {
