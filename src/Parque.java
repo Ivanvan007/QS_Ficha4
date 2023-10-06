@@ -2,43 +2,33 @@ import java.util.ArrayList;
 
 public class Parque
 {
-    private static float precoMinStatic = 0.15f; //preço por cada 15 minutos
-    private static int lugaresEstacionamento = 500;
-    private static float precoMinutos;//preço por cada 15 minutos
-    private static int numeroLugares;//lugares totais do estacionamento
-    private static int lugaresDisponiveis;
-    private static ArrayList<Aluno>alunosEstacionados;
-    private static int estacionados;
+    private static final double precoAlunosDefault = 0.10;
+    private static final int numeroLugaresDefault = 500;
+    private double precoAlunos; //preço por cada 15 minutos para os alunos
+    private int numeroLugares;//lugares totais do estacionamento
+    private int lugaresDisponiveis;
+    private ArrayList<Aluno>alunosEstacionados;
+    private int estacionados;
 
     public Parque()
     {
-        precoMinutos = precoMinStatic;
-        numeroLugares = lugaresEstacionamento;
+        precoAlunos = precoAlunosDefault;
+        numeroLugares = numeroLugaresDefault;
+        lugaresDisponiveis = numeroLugares;
 
     }
-
-    public static float getPrecoMinStatic() {
-        return precoMinStatic;
+    public Parque(int precoAlunos, int numeroLugares)
+    {
+        this.precoAlunos= precoAlunos;
+        this.numeroLugares = numeroLugares;
     }
 
-    public static void setPrecoMinStatic(float precoMinStatic) {
-        Parque.precoMinStatic = precoMinStatic;
+    public double getPrecoAlunos() {
+        return precoAlunos;
     }
 
-    public static int getLugaresEstacionamento() {
-        return lugaresEstacionamento;
-    }
-
-    public static void setLugaresEstacionamento(int lugaresEstacionamento) {
-        Parque.lugaresEstacionamento = lugaresEstacionamento;
-    }
-
-    public float getPrecoMinutos() {
-        return precoMinutos;
-    }
-
-    public void setPrecoMinutos(float precoMinutos) {
-        this.precoMinutos = precoMinutos;
+    public void setPrecoAlunos(double precoAlunos) {
+        this.precoAlunos = precoAlunos;
     }
 
     public int getNumeroLugares() {
@@ -72,11 +62,45 @@ public class Parque
     public void setEstacionados(int estacionados) {
         this.estacionados = estacionados;
     }
+    public void estacionarAluno(Aluno a)
+    {
+        alunosEstacionados.add(a);
+        estacionarVeiculo();
+    }
+    public void desestacionarAluno(Aluno a)
+    {
+        for (Aluno al : alunosEstacionados)
+        {
+            if(al.equals(a))
+            {
+                alunosEstacionados.remove(al);
+                desestacionarVeiculo();
+            }
+            else
+            {
+                System.out.println("O aluno não foi encontrado \n");
+            }
+        }
+    }
+    public void desestacionarVeiculo()
+    {
+        estacionados --;
+    }
+
+    public void estacionarVeiculo()
+    {
+        estacionados ++;
+    }
+
+    public int calculaLugaresDisponiveis(){
+        lugaresDisponiveis = estacionados;
+        return lugaresDisponiveis;
+    }
 
     @Override
     public String toString() {
         return "Parque{" +
-                "precoMinutos=" + precoMinutos +
+                "precoAlunos=" + precoAlunos +
                 ", numeroLugares=" + numeroLugares +
                 ", lugaresDisponiveis=" + lugaresDisponiveis +
                 ", alunosEstacionados=" + alunosEstacionados +
