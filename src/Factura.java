@@ -2,7 +2,7 @@ public class Factura
 {
     public static int tempId = 0;
     private int id;
-    private String concepto;
+    private String conceito;
     private int tempo;
     private int valor;
 
